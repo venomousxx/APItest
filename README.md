@@ -1,3 +1,3 @@
 # APItest
 
-how to run : npx mocha apiTest.js --timeout=30000
+how to run : npx mocha apiTest.js --timeout=3000
