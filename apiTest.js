@@ -4,6 +4,7 @@ const {expect}=require('chai');
 
 //** const value */
 const url = 'https://{{base}}';
+const pathVariable = 'string'
 const body = {
         "description" : "text",
         "callback_url" : "string",
@@ -18,7 +19,7 @@ describe("PATCH test api ",async()=>{
     
     it('Execute API call with valid required parameters', async() => {
         const response = await axios.patch(
-            `${url}/qr_codes/qr_code_id`,
+            `${url}/qr_codes/${pathVariable}`,
             body,
             header
         )
@@ -30,8 +31,9 @@ describe("PATCH test api ",async()=>{
 
     it('[Negative Case] Execute API call with path value is empty', async() => {
         try {
+            pathVariable = '';
             await axios.patch(
-                `${url}/qr_codes/`,
+                `${url}/qr_codes/${pathVariable}`,
                 body,
                 header
             );
@@ -48,7 +50,7 @@ describe("PATCH test api ",async()=>{
         try {
             header.Authentication = '';
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 body,
                 header
             );
@@ -64,7 +66,7 @@ describe("PATCH test api ",async()=>{
         try {
             body.callback_url = '';
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 body,
                 header
             );
@@ -81,7 +83,7 @@ describe("PATCH test api ",async()=>{
         try {
             body.callback_url = 'input url qr code that has been used';
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 body,
                 header
             );
@@ -98,7 +100,7 @@ describe("PATCH test api ",async()=>{
         try {
     
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 {
                     description : "text",
                     callback_url : "",
@@ -119,7 +121,7 @@ describe("PATCH test api ",async()=>{
         try {
             body.amount = 100;
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 body,
                 header
             );
@@ -136,7 +138,7 @@ describe("PATCH test api ",async()=>{
         try {
             body.amount = 100;
             await axios.patch(
-                `${url}/qr_codes/qr_code_id'`,
+                `${url}/qr_codes/${pathVariable}'`,
                 body,
                 header
             );
